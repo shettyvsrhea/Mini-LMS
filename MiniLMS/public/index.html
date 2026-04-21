@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini LMS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="login-screen">
+    <div class="login-glow"></div>
+    <div class="login-box">
+        <div class="login-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h1>Mini LMS</h1>
+        <p class="subtitle">Learning Management System</p>
+        <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input type="text" id="db-user" placeholder="Username" value="miniLMS">
+        </div>
+        <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="db-pass" placeholder="Password">
+        </div>
+        <div class="input-group">
+            <i class="fas fa-database"></i>
+            <input type="text" id="db-dsn" placeholder="Connection String" value="localhost:1521/XEPDB1">
+        </div>
+        <button class="login-btn" onclick="doConnect()">
+            <span class="btn-text">Connect</span>
+            <span class="btn-loader hidden"><i class="fas fa-circle-notch fa-spin"></i></span>
+        </button>
+        <p id="login-error"></p>
+    </div>
+</div>
+
+<div id="main-screen" class="hidden">
+    <nav id="sidebar">
+        <div class="brand">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Mini LMS</span>
+        </div>
+        <div class="nav-section-label">MAIN</div>
+        <a href="#" class="nav-link active" data-section="dashboard" onclick="loadSection('dashboard')">
+            <i class="fas fa-chart-pie"></i><span>Dashboard</span>
+        </a>
+        <div class="nav-section-label">PEOPLE</div>
+        <a href="#" class="nav-link" data-section="students" onclick="loadSection('students')">
+            <i class="fas fa-user-graduate"></i><span>Students</span>
+        </a>
+        <a href="#" class="nav-link" data-section="instructors" onclick="loadSection('instructors')">
+            <i class="fas fa-chalkboard-teacher"></i><span>Instructors</span>
+        </a>
+        <div class="nav-section-label">ACADEMICS</div>
+        <a href="#" class="nav-link" data-section="courses" onclick="loadSection('courses')">
+            <i class="fas fa-book"></i><span>Courses</span>
+        </a>
+        <a href="#" class="nav-link" data-section="offerings" onclick="loadSection('offerings')">
+            <i class="fas fa-calendar-alt"></i><span>Offerings</span>
+        </a>
+        <a href="#" class="nav-link" data-section="enrollments" onclick="loadSection('enrollments')">
+            <i class="fas fa-clipboard-list"></i><span>Enrollments</span>
+        </a>
+        <div class="nav-section-label">ACTIVITY</div>
+        <a href="#" class="nav-link" data-section="assignments" onclick="loadSection('assignments')">
+            <i class="fas fa-tasks"></i><span>Assignments</span>
+        </a>
+        <a href="#" class="nav-link" data-section="submissions" onclick="loadSection('submissions')">
+            <i class="fas fa-file-upload"></i><span>Submissions</span>
+        </a>
+        <a href="#" class="nav-link" data-section="attendance" onclick="loadSection('attendance')">
+            <i class="fas fa-clipboard-check"></i><span>Attendance</span>
+        </a>
+        <a href="#" class="nav-link" data-section="announcements" onclick="loadSection('announcements')">
+            <i class="fas fa-bullhorn"></i><span>Announcements</span>
+        </a>
+        <div class="nav-spacer"></div>
+        <a href="#" class="nav-link logout" onclick="doDisconnect()">
+            <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+        </a>
+    </nav>
+    <main id="content">
+        <div id="page-loader" class="hidden">
+            <div class="loader-bar"></div>
+        </div>
+        <div id="page-body"></div>
+    </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
